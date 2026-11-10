@@ -58,7 +58,7 @@ export function ProjectsHero() {
                 Learn by Building. Master AI from the Inside.
               </h1>
               <p className="max-w-2xl text-base leading-relaxed text-foreground-secondary sm:text-lg">
-                Every major phase of the Open AI Roadmap ends with a real
+                Every major phase of the AI Roadmap ends with a real
                 engineering project. Build mathematical engines, neural
                 networks, tokenizers, attention mechanisms, and your own
                 GPT-style language model from scratch.

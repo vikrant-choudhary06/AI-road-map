@@ -532,7 +532,7 @@ export function DashboardDataControls({
         setFeedback({
           ok: false,
           message:
-            "Unsupported backup format: Expected Open AI Roadmap Schema v1 JSON.",
+            "Unsupported backup format: Expected AI Roadmap Schema v1 JSON.",
         });
         return;
       }

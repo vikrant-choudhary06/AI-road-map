@@ -74,7 +74,7 @@ const jsonLd = {
     {
       "@type": "EducationalOccupationalProgram",
       "@id": `${SITE_CONFIG.url}/#curriculum`,
-      name: "Open AI & LLM Learning Roadmap",
+      name: "AI Roadmap — Complete AI & LLM Learning Curriculum",
       description:
         "Complete 9-phase curriculum to learn AI from foundations to training and deploying custom Large Language Models.",
       educationalProgramMode: "self-paced",

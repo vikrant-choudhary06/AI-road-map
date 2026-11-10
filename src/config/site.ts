@@ -1,15 +1,15 @@
 import type { NavItem } from "@/types";
 
 export const SITE_CONFIG = {
-  name: "Open AI Roadmap",
-  shortName: "Open AI Roadmap",
+  name: "AI Roadmap",
+  shortName: "AI Roadmap",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://open-ai-roadmap.dev",
   tagline:
     "A complete, free learning roadmap that takes you from Python and mathematics to neural networks, Transformers, and training your own language models — step by step.",
   footerNote:
     "An independent, free learning roadmap for aspiring AI and LLM developers.",
   disclaimer:
-    "Open AI Roadmap is an independent educational curriculum platform and is not officially affiliated with, endorsed by, or sponsored by Harvard University, MIT, Stanford University, Google, Hugging Face, or any referenced course providers.",
+    "AI Roadmap is an independent educational curriculum platform and is not officially affiliated with, endorsed by, or sponsored by Harvard University, MIT, Stanford University, Google, Hugging Face, or any referenced course providers.",
   navigation: [
     {
       label: "Home",

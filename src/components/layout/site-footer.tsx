@@ -93,7 +93,7 @@ export function SiteFooter() {
             <span className="font-semibold text-foreground">
               Local Storage &amp; Privacy Notice:{" "}
             </span>
-            Open AI Roadmap stores all your topic completions, course bookmarks,
+            AI Roadmap stores all your topic completions, course bookmarks,
             project notes, and study sessions locally in your browser&apos;s{" "}
             <code className="rounded bg-secondary px-1 py-0.5 font-mono text-[11px] text-foreground">
               localStorage

@@ -1,4 +1,4 @@
-# Open AI Roadmap
+# AI Roadmap
 
 > A production-grade, interactive, open-access educational platform guiding learners from absolute beginners to building, training, evaluating, and deploying their own AI and Large Language Models from scratch.
 
@@ -47,7 +47,7 @@
 
 ## Overview
 
-**Open AI Roadmap** is a free, publicly accessible, full-stack educational web application designed to eliminate ambiguity in AI education. Instead of disconnected tutorials or high-level summaries, it offers an end-to-end, structured engineering roadmap that takes learners through every requisite discipline:
+**AI Roadmap** is a free, publicly accessible, full-stack educational web application designed to eliminate ambiguity in AI education. Instead of disconnected tutorials or high-level summaries, it offers an end-to-end, structured engineering roadmap that takes learners through every requisite discipline:
 
 1. **Foundations**: Mathematics, Linear Algebra, Multivariable Calculus, Probability, and Python programming.
 2. **Machine Learning**: Classical algorithms, loss functions, optimization, scikit-learn, and evaluation metrics.
@@ -138,8 +138,8 @@ The user interface follows an **editorial, human-crafted design language** inspi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/open-ai-roadmap.git
-   cd open-ai-roadmap
+   git clone https://github.com/vikrant-choudhary06/AI-road-map.git
+   cd AI-road-map
    ```
 
 2. Install dependencies:
@@ -268,7 +268,7 @@ We evaluated the two official deployment methodologies recommended by Cloudflare
 
 ## Data Storage & Privacy
 
-Open AI Roadmap is designed with strict **user privacy and data sovereignty**:
+AI Roadmap is designed with strict **user privacy and data sovereignty**:
 
 - **No Remote Telemetry**: No third-party tracking scripts, analytics beacons, or remote logging.
 - **No Authentication Barriers**: No sign-up walls, OAuth prompts, or passwords required to track progress.

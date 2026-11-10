@@ -2307,7 +2307,7 @@ export function useRoadmapProgress() {
           return {
             ok: false,
             message:
-              "Invalid backup file: expected schemaVersion 1 Open AI Roadmap JSON.",
+              "Invalid backup file: expected schemaVersion 1 AI Roadmap JSON.",
           };
         }
 

@@ -22,7 +22,7 @@ export async function generateMetadata({
 
   if (!resource) {
     return {
-      title: "Resource Not Found — Open AI Roadmap",
+      title: "Resource Not Found — AI Roadmap",
     };
   }
 
