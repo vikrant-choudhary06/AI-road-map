@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "open-ai-roadmap",
+  "name": "ai-roadmap-from-scratch",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-10",
   "compatibility_flags": ["nodejs_compat"],
