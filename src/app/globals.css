@@ -1,0 +1,226 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Core Brand Palette */
+  --palette-warm-ivory: #F7F5EF;
+  --palette-soft-sage: #D9E5D6;
+  --palette-muted-green: #A9B9A3;
+  --palette-terracotta: #C77D63;
+  --palette-charcoal: #292D29;
+
+  /* Semantic Light Theme Tokens */
+  --background: #F7F5EF;
+  --foreground: #292D29;
+
+  --card: #FCFBF8;
+  --card-foreground: #292D29;
+
+  --popover: #FCFBF8;
+  --popover-foreground: #292D29;
+
+  --primary: #292D29;
+  --primary-foreground: #F7F5EF;
+
+  --secondary: #D9E5D6;
+  --secondary-foreground: #222822;
+
+  --muted: #EFECE3;
+  --muted-foreground: #525952;
+
+  --accent: #C77D63;
+  --accent-foreground: #FCFBF8;
+
+  /* Extended Botanical & Terracotta Tokens */
+  --sage: #D9E5D6;
+  --sage-foreground: #222822;
+  --sage-muted: #A9B9A3;
+  --sage-deep: #364933;
+
+  --terracotta: #C77D63;
+  --terracotta-strong: #A8583E;
+  --terracotta-subtle: #F6EAE4;
+
+  /* Borders, Inputs & Focus Rings */
+  --border: #DFDDD4;
+  --border-strong: #C7C4B8;
+  --input: #DFDDD4;
+  --ring: #C77D63;
+  --link: #A8583E;
+
+  /* Semantic Status States */
+  --success: #2E6B47;
+  --success-subtle: #E3F0E6;
+  --success-foreground: #1B432B;
+
+  --warning: #B86B19;
+  --warning-subtle: #F9EFE0;
+  --warning-foreground: #6E3E0B;
+
+  --error: #B9382C;
+  --error-subtle: #FBEAE8;
+  --error-foreground: #7A2119;
+  --destructive: #B9382C;
+
+  /* Radius Scale (Refined, not overly rounded) */
+  --radius: 0.625rem;
+}
+
+.dark {
+  /* Semantic Dark Theme Tokens (Warm Charcoal & Muted Botanicals — Zero Navy/Violet) */
+  --background: #1A1D1A;
+  --foreground: #F0EDE4;
+
+  --card: #222622;
+  --card-foreground: #F0EDE4;
+
+  --popover: #242924;
+  --popover-foreground: #F0EDE4;
+
+  --primary: #F0EDE4;
+  --primary-foreground: #1A1D1A;
+
+  --secondary: #2C342B;
+  --secondary-foreground: #D9E5D6;
+
+  --muted: #262B26;
+  --muted-foreground: #A5B0A3;
+
+  --accent: #D0876E;
+  --accent-foreground: #1A1D1A;
+
+  /* Extended Botanical & Terracotta Tokens (Dark) */
+  --sage: #2C342B;
+  --sage-foreground: #D9E5D6;
+  --sage-muted: #7C8F77;
+  --sage-deep: #C5D6C1;
+
+  --terracotta: #D0876E;
+  --terracotta-strong: #DF9A82;
+  --terracotta-subtle: #332520;
+
+  /* Borders, Inputs & Focus Rings (Dark) */
+  --border: #323832;
+  --border-strong: #464E45;
+  --input: #323832;
+  --ring: #D0876E;
+  --link: #DF9A82;
+
+  /* Semantic Status States (Dark) */
+  --success: #58A673;
+  --success-subtle: #1E3124;
+  --success-foreground: #B6E2C4;
+
+  --warning: #DF9B48;
+  --warning-subtle: #332717;
+  --warning-foreground: #F5D6AA;
+
+  --error: #E06C60;
+  --error-subtle: #361E1C;
+  --error-foreground: #F7C4BF;
+  --destructive: #E06C60;
+}
+
+@theme inline {
+  /* Core Palette Utilities */
+  --color-warm-ivory: var(--palette-warm-ivory);
+  --color-soft-sage: var(--palette-soft-sage);
+  --color-muted-green: var(--palette-muted-green);
+  --color-brand-terracotta: var(--palette-terracotta);
+  --color-charcoal: var(--palette-charcoal);
+
+  /* Semantic Color Utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+  --color-sage-muted: var(--sage-muted);
+  --color-sage-deep: var(--sage-deep);
+
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-strong: var(--terracotta-strong);
+  --color-terracotta-subtle: var(--terracotta-subtle);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-link: var(--link);
+
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-success-foreground: var(--success-foreground);
+
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-error: var(--error);
+  --color-error-subtle: var(--error-subtle);
+  --color-error-foreground: var(--error-foreground);
+  --color-destructive: var(--destructive);
+
+  /* Typography Families */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-editorial), Georgia, Cambria, "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Border Radius Tokens */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans selection:bg-secondary selection:text-secondary-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Consistent, high-visibility accessible focus rings */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
