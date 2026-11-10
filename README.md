@@ -6,8 +6,11 @@
 [![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare_Workers-Deployed-F38020?style=flat-square&logo=cloudflare)](https://open-ai-roadmap.miidaystudioagency.workers.dev)
 [![Tests](https://img.shields.io/badge/Tests-19%20Passed-22c55e?style=flat-square)](#automated-testing)
 [![License](https://img.shields.io/badge/License-MIT-amber?style=flat-square)](LICENSE)
+
+**Live Production Deployment**: [https://open-ai-roadmap.miidaystudioagency.workers.dev](https://open-ai-roadmap.miidaystudioagency.workers.dev)
 
 ---
 
@@ -29,6 +32,12 @@
   - [Development Server](#development-server)
   - [Production Build](#production-build)
 - [Automated Testing & Quality Assurance](#automated-testing--quality-assurance)
+- [Cloudflare Workers Deployment](#cloudflare-workers-deployment)
+  - [Live Deployment](#live-deployment)
+  - [Adapter Selection & Rationale](#adapter-selection--rationale)
+  - [Deployment Workflow & Commands](#deployment-workflow--commands)
+  - [Cloudflare Environment & Bindings](#cloudflare-environment--bindings)
+  - [Edge Runtime Compatibility & Troubleshooting](#edge-runtime-compatibility--troubleshooting)
 - [Data Storage & Privacy](#data-storage--privacy)
 - [SEO, Metadata & Accessibility](#seo-metadata--accessibility)
 - [Contributing](#contributing)
@@ -192,6 +201,68 @@ npm test
 5. **GitHub URL Validation**
    - Enforces valid repository URL format (`https://github.com/owner/repo`).
    - Rejects non-GitHub domains, javascript URIs, and malformed inputs.
+
+---
+
+## Cloudflare Workers Deployment
+
+The application is configured and deployed to **Cloudflare Workers** with edge-first global delivery, high-speed static asset distribution, and serverless compute.
+
+### Live Deployment
+
+- **Worker Name**: `open-ai-roadmap`
+- **Production URL**: [https://open-ai-roadmap.miidaystudioagency.workers.dev](https://open-ai-roadmap.miidaystudioagency.workers.dev)
+- **Compatibility Date**: `2026-11-10`
+- **Compatibility Flags**: `nodejs_compat`
+- **HTTPS / HTTP/3**: Active and globally distributed via Cloudflare Anycast CDN
+
+### Adapter Selection & Rationale
+
+We evaluated the two official deployment methodologies recommended by Cloudflare:
+
+1. **vinext**:
+   - Evaluated via `npx vinext check` (scored 92% compatible).
+   - However, `vinext` depends on Cloudflare's experimental `cf` CLI (`cf@1.0.0-beta.28`), which enforces an engine requirement of `node: '^22.23.0 || ^24.22.0 || ^26.12.0'` (incompatible with Node v22.14 LTS). Furthermore, `vinext` completely replaces Next.js's bundler with Vite 8 (`@vitejs/plugin-rsc`), requiring `@tailwindcss/postcss` and ignoring Turbopack loaders.
+2. **OpenNext (`@opennextjs/cloudflare`) [SELECTED]**:
+   - Selected as the production-ready adapter.
+   - Works natively with standard `next build` (Next.js 16.4.5), React 19, and Tailwind CSS 4.
+   - Uses the standard, stable `wrangler` CLI (`wrangler 4.159.0`).
+   - Generates `.open-next/worker.js` and `.open-next/assets` for static asset serving without needing paid external databases or storage buckets.
+
+### Deployment Workflow & Commands
+
+| Task | Command | Description |
+| :--- | :--- | :--- |
+| **Type Check** | `npm run type-check` | Runs `tsc --noEmit` across all project files and tests |
+| **Linting** | `npm run lint` | Runs `eslint` with Next.js core web vitals and strict rules |
+| **Testing** | `npm test` | Runs the 5-suite, 19-test automated test suite via `tsx` |
+| **Worker Build** | `npm run build:worker` | Runs `opennextjs-cloudflare build` to create `.open-next/worker.js` |
+| **Local Preview** | `npm run preview:worker` | Builds and launches local Cloudflare Workers simulation on `http://localhost:8787` |
+| **Production Deploy** | `npm run deploy:worker` | Builds and deploys directly to Cloudflare Workers (`workers.dev`) |
+
+### Cloudflare Environment & Bindings
+
+```jsonc
+// wrangler.jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "open-ai-roadmap",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}
+```
+
+> **Zero Unnecessary Bindings**: The application deliberately avoids D1, KV, R2, or Durable Objects for progress tracking. All user state is strictly stored in device-local `localStorage`, ensuring zero ongoing infrastructure costs and total user privacy.
+
+### Edge Runtime Compatibility & Troubleshooting
+
+- **Cache Components Compatibility**: Next.js experimental `cacheComponents: true` must remain disabled when targeting Cloudflare Workers. In `workerd`, Next.js's experimental timer-based cache scheduling triggers a known hang-request cancellation error. Disabling it allows all 70 static routes to prerender cleanly as SSG/Static assets served directly through Cloudflare's high-speed assets binding.
+- **Client-Only Persistence**: Components accessing `localStorage` must use standard hydration-safe hooks (such as `useMounted()` and `useEffect`) to prevent SSR hydration divergence.
 
 ---
 
